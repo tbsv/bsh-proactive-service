@@ -9,6 +9,7 @@ config.environment = "localhost";
 
 // BSH API Oauth2
 config.bsh = {
+    apiUrl: 'https://developer.home-connect.com/api/homeappliances/',
     authorizeUrl: 'https://developer.home-connect.com/security/oauth/authorize',
     clientId: '***REMOVED***',
     clientSecret: '***REMOVED***',
@@ -21,6 +22,7 @@ config.bsh = {
 
 // FitBit API Oauth2
 config.fitbit = {
+    apiUrl: 'https://api.fitbit.com/1/user/',
     authorizeUrl: 'https://www.fitbit.com/oauth2/authorize',
     clientId: '***REMOVED***',
     clientSecret: '***REMOVED***',
@@ -28,7 +30,8 @@ config.fitbit = {
     grantType: 'authorization_code',
     responseType: 'code',
     scope: 'activity%20heartrate%20profile%20sleep',
-    tokenUrl: 'https://api.fitbit.com/oauth2/token'
+    tokenUrl: 'https://api.fitbit.com/oauth2/token',
+    user: '***REMOVED***'
 };
 
 module.exports = config;
