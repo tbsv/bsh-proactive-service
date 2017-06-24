@@ -37,7 +37,7 @@ exports.getAccessToken = function(req, res) {
 
     };
 
-    // POST call to BSH Home Connect API
+    // POST call to Fitbit API
     request(reqOptions, function (error, response, body) {
         if(error) {
             log.error(res.statusCode + ': Requesting Fitbit API failed.');
@@ -48,11 +48,48 @@ exports.getAccessToken = function(req, res) {
             } else {
                 var responseBody = JSON.parse(body);
                 log.info(res.statusCode + ': Requested access token successfully. ' + responseBody.access_token);
-                // Save BSH AccessToken
+                // Save Fitbit AccessToken
                 oauth.saveToken('fitbit', responseBody.access_token);
                 res.redirect('/setup');
             }
         }
+    });
+
+};
+
+// Fetch sleep logs #FITBIT
+exports.fetchLogs = function(req, callback) {
+
+    oauth.findToken('fitbit', function (fitbitToken) {
+
+        // Request options
+        var reqOptions = {
+            url: 'https://api.fitbit.com/1.2/user/' + config.fitbit.user + '/sleep/list.json?beforeDate=2017-06-01&sort=asc&offset=0&limit=1',
+            method: 'GET',
+            headers: {
+                'Authorization': 'Bearer ' + fitbitToken
+            }
+
+        };
+
+        // GET call to Fitbit API
+        request(reqOptions, function (error, response, body) {
+            if(error) {
+                log.error(response.statusCode + ': Requesting Fitbit API failed.');
+                return callback(err);
+            } else {
+                // Debugging
+                if (response.statusCode !== 200) {
+                    log.error(response.statusCode + ': Requesting sleep logs failed.');
+                    return callback(err);
+                } else {
+                    log.debug(response.statusCode + ': Requested sleep logs.');
+                    return callback(body);
+                }
+            }
+        });
+
+
     });
 
 };
