@@ -64,7 +64,7 @@ exports.fetchLogs = function(req, callback) {
 
         // Request options
         var reqOptions = {
-            url: 'https://api.fitbit.com/1.2/user/' + config.fitbit.user + '/sleep/list.json?beforeDate=2017-06-01&sort=asc&offset=0&limit=1',
+            url: 'https://api.fitbit.com/1.2/user/' + config.fitbit.user + '/sleep/list.json?beforeDate=2017-06-01&sort=desc&offset=0&limit=1',
             method: 'GET',
             headers: {
                 'Authorization': 'Bearer ' + fitbitToken
