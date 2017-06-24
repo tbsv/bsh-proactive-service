@@ -51,3 +51,51 @@ exports.getAccessToken = function(req, res) {
     });
 
 };
+
+// Start coffeemaker #BSH
+exports.startCoffeemaker = function(coffeeBeanAmount) {
+
+    oauth.findToken('bsh', function (bshToken) {
+
+        // Payload for the coffee programm (eg. bean amount)
+        var payload = {
+            data: {
+                key: "ConsumerProducts.CoffeeMaker.Program.Beverage.Coffee",
+                options: [
+                    {
+                        key: "ConsumerProducts.CoffeeMaker.Option.BeanAmount",
+                        value: coffeeBeanAmount
+                    }]
+            }
+        };
+
+        // Request options
+        var reqOptions = {
+            url: config.bsh.apiUrl + 'BOSCH-HCS06COM1-1EA653F9A0A59C' + '/programs/active',
+            method: 'PUT',
+            headers: {
+                'Authorization': 'Bearer ' + bshToken,
+                'Accept': 'application/vnd.bsh.sdk.v1+json',
+                'Content-Type': 'application/vnd.bsh.sdk.v1+json'
+            },
+            json: payload
+
+        };
+
+        // POST call to BSH Home Connect API
+        request(reqOptions, function (error, response, body) {
+            if (error) {
+                log.error(res.statusCode + ': Requesting BSH API failed.');
+            } else {
+                // Debugging
+                if (response.statusCode !== 204) {
+                    log.error(response.statusCode + ': Starting coffeemaker failed.');
+                } else {
+                    log.info(response.statusCode + ': Started coffeemaker successfully.');
+                }
+            }
+        });
+
+    });
+
+};
