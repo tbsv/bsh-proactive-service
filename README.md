@@ -1,7 +1,7 @@
 BSH Proactive Service
 ==============
 
-This proactive service connects the BSH simulation API with the Fitbit API.
+This proactive service interacts with the Fitbit Developer API and the BSH Simulation SDK.
 
 
 
