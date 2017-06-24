@@ -1,5 +1,29 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  h1.special BSH Proactive Service
+
+  div.uk-margin-large
+
+  div.uk-grid.uk-text-center
+    div.uk-width-large-1-4.uk-container-center
+      div.uk-panel.uk-panel-box
+        p
+          | This proactive service interacts with the Fitbit Developer API and the BSH Simulation SDK.
+        hr
+        h4 Requirements
+        table.uk-table
+          tbody
+            tr
+              td
+              td
+                i.uk-text-success.uk-icon-check-circle-o
+                span  BSH HomeConnect Developer account
+            tr
+              td
+              td
+                i.uk-text-success.uk-icon-check-circle-o
+                span  Fitbit API Developer account
+
+        div.uk-button-group
+          a.uk-button.uk-button-large.uk-button-primary(href='/setup') Get started
