@@ -1,0 +1,28 @@
+extends layout
+
+block content
+    h1.special BSH Proactive Service
+
+    div.uk-margin-large
+
+    div.uk-grid.uk-text-center
+        div.uk-width-large-1-4.uk-container-center
+            div.uk-panel.uk-panel-box
+                p
+                    | In order to use this prototype, you have to login to the required accounts first. Then you can create some sleeplogs and start the coffeemaker afterwards.
+                hr
+                h4 Steps to follow
+                table.uk-table
+                    tbody
+                        tr
+                            td
+                                a.uk-button.uk-button-large.uk-button-primary(href='/bsh/authorize') 1. BSH Login
+                        tr
+                            td
+                                a.uk-button.uk-button-large.uk-button-primary(href='/fitbit/authorize') 2. Fitbit Login
+                        tr
+                            td
+                                a.uk-button.uk-button-large.uk-button-primary(href='/sleeplogs') 3. Insert Sleep Logs
+                        tr
+                            td
+                                a.uk-button.uk-button-large.uk-button-primary(href='/coffeemaker') 4. Start coffeemaker
