@@ -26,3 +26,20 @@ exports.saveToken = function(type, accessToken) {
     });
 
 };
+
+
+// Create new user #INTERNAL
+exports.findToken = function(type, callback) {
+
+    database.tokendb.findOne({ type: type }, function (err, token) {
+        if (err) {
+            //log.error('Accessing db failed.');
+        } else if (token) {
+            //log.silly('Token found.');
+            return callback(token.access_token);
+        } else {
+
+        }
+    });
+
+};
