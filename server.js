@@ -5,6 +5,10 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var winston = require('winston');
+
+// Load global logging
+var log = require('./config/log');
 
 // Add routes for REST API
 var index = require('./routes/index');
@@ -26,6 +30,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Define routes
 app.use('/', index);
+
+log.info('Initializing proactive service...');
 
 // Catch 404 and forward to error handler
 app.use(function(req, res, next) {
