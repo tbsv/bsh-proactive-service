@@ -91,7 +91,7 @@ exports.startCoffeemaker = function(coffeeBeanAmount) {
                 if (response.statusCode !== 204) {
                     log.error(response.statusCode + ': Starting coffeemaker failed.');
                 } else {
-                    log.info(response.statusCode + ': Started coffeemaker successfully.');
+                    log.info(response.statusCode + ': Started coffeemaker successfully. ' + coffeeBeanAmount);
                 }
             }
         });
