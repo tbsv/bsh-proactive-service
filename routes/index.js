@@ -12,4 +12,9 @@ router.get('/setup', function(req, res, next) {
     res.render('setup');
 });
 
+/* GET sleeploogs page. */
+router.get('/sleeplogs', function(req, res, next) {
+    res.render('sleeplogs');
+});
+
 module.exports = router;
