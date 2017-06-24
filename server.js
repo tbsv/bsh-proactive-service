@@ -7,6 +7,8 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var nedb = require('./controller/nedbController');
 var winston = require('winston');
+var cronjob = require('cron').CronJob;
+var trigger = require('./controller/triggerController');
 
 // Load global logging
 var log = require('./config/log');
@@ -44,6 +46,16 @@ app.use(function(req, res, next) {
   err.status = 404;
   next(err);
 });
+
+log.debug('Initializing cronjob with 10 seconds...');
+
+// Start the cron job
+new cronjob('*/10 * * * * *', function() {
+
+    // Fetch new data
+    trigger.fetchData();
+
+}, null, true, 'Europe/Berlin');
 
 // Error Handler
 app.use(function(err, req, res, next) {
