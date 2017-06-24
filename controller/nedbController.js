@@ -4,4 +4,4 @@ var Datastore = require('nedb');
 
 // Persistent datastore (with autoload)
 database = {};
-database.sleeplogsdb = new Datastore({ filename: path.join(__dirname, '../db/sleeplogs.db'), autoload: true });
+database.tokendb = new Datastore({ filename: path.join(__dirname, '../db/tokens.db'), autoload: true });

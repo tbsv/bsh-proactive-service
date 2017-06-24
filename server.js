@@ -13,6 +13,8 @@ var log = require('./config/log');
 
 // Add routes for REST API
 var index = require('./routes/index');
+var bsh = require('./routes/bsh');
+var fitbit = require('./routes/fitbit');
 
 // Set express engine
 var app = express();
@@ -31,6 +33,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Define routes
 app.use('/', index);
+app.use('/bsh', bsh);
+app.use('/fitbit', fitbit);
 
 log.info('Initializing proactive service...');
 
