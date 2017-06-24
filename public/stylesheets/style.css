@@ -1,8 +1,59 @@
+html {
+  margin: 0px;
+  height: 100%;
+}
+
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  min-height: 100%;
+  background-color: #1E1E1E;
+  background-size: auto 55%;
+  text-align: center;
+  overflow: hidden !important;
+}
+
+h1.special {
+  color: white;
+}
+
+h2.special {
+  color: white;
 }
 
 a {
-  color: #00B7FF;
+  color: #00adef;
+}
+
+.badge {
+  position: absolute;
+  left: -7px;
+  top: 17px;
+  background-color: #F70000;
+  -webkit-transform: rotate(-45deg) scale(1) skew(0deg) translate(10px);
+  -moz-transform: rotate(-45deg) scale(1) skew(0deg) translate(10px);
+  -o-transform: rotate(-45deg) scale(1) skew(0deg) translate(10px);
+  -ms-transform: rotate(-45deg) scale(1) skew(0deg) translate(10px);
+  transform: rotate(-45deg) scale(1) skew(0deg) translate(10px);
+  text-align: center;
+  color: white;
+  padding: 0 .5em;
+  border-top: 0px;
+  line-height: 20px;
+  margin: 0;
+}
+.badge:after {
+  content: ' ';
+  position: absolute;
+  right: -19px;
+  top: 0px;
+  border-right: 20px solid transparent;
+  border-bottom: 20px solid #F70000;
+}
+.badge:before {
+  content: ' ';
+  position: absolute;
+  left: -19px;
+  top: 0px;
+  border-left: 20px solid transparent;
+  border-bottom: 20px solid #F70000;
 }
